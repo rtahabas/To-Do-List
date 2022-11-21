@@ -1,2 +1,2 @@
-# rise-technology
+# Rise Technology & Consulting
 Test Case
