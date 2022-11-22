@@ -7,12 +7,9 @@ import Button from '@mui/material/Button';
 const Root = () => {
     return (
         <div>
-            <div>
-                <Button variant="contained">Hello World</Button>
-            </div>
             <Header />
             <Outlet />
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };
