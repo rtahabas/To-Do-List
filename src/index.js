@@ -1,7 +1,7 @@
 import React from 'react';
-import App from './App';
-import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom/client';
+import AppRouter from 'routes/Router';
 
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux'
@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <AppRouter />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
