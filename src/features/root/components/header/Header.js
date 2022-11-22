@@ -135,7 +135,5 @@ const Header = () => {
     );
 }
 export default Header;
-function rgba(arg0: number, arg1: number, arg2: number, arg3: number) {
-    throw new Error('Function not implemented.');
-}
+
 
