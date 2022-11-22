@@ -1,0 +1,10 @@
+{
+  "name": "rise-technology",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rtahabas/rise-technology.git",
+  "author": "rtahabas <rtahabas@gmail.com>",
+  "license": "MIT",
+  "description": "Test-Case",
+  "private": true
+}
