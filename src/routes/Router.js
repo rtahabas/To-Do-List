@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 
 import Root from '@features/root/Root';
-import Home from '@features/root/components/home/Home';
+import Home from '@features/home/Home';
 
 const AppRouter = () => {
     return (

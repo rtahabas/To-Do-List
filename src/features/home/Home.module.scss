@@ -1,0 +1,26 @@
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    transition: 0.3s ease;
+    backdrop-filter: blur(30px);
+    border-radius: 15px;
+    margin: 10% 10%;
+}
+
+.form {
+    width: 100%;
+    color: #fff;
+    &_wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 2rem;
+    }
+}
+
+.create_button {
+    height: 56px;
+}
