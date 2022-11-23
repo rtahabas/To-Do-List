@@ -1,32 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-    jobs: [
-        {
-            id: 1,
-            jobName: "Frontend Developer",
-            jobPriority: "Urgent",
-        },
-        {
-            id: 2,
-            jobName: "Backend Developer",
-            jobPriority: "Regular",
-        },
-        {
-            id: 3,
-            jobName: "Fullstack Developer",
-            jobPriority: "Trivial",
 
-        }
-    ]
-};
+const initialList = () => {
+    const item = window.localStorage.getItem('list');
+
+    return item ? JSON.parse(item) : [];
+}
+
 
 export const jobsSlice = createSlice({
     name: 'jobs',
-    initialState,
+    initialState: {
+        jobs: initialList(),
+    },
     reducers: {
         addJob: (state, action) => {
             state.jobs.push(action.payload);
+            window.localStorage.setItem('list', JSON.stringify(state.jobs));
         },
         removeJob: (state, action) => {
             state.jobs = state.jobs.filter(job => job.id !== action.payload);
