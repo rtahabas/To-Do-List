@@ -15,11 +15,11 @@ import Paper from '@mui/material/Paper';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import Styles from "./List.module.scss";
-import { useSelector } from 'react-redux';
-import { selectJobs } from "../homeSlice";
+import { useSelector, useDispatch } from 'react-redux';
+import { selectJobs, removeJob } from "../homeSlice";
 
-function createData(name, calories, fat,) {
-    return { name, calories, fat };
+function createData(jobName, jobPriority, id,) {
+    return { jobName, jobPriority, id };
 }
 
 
@@ -27,12 +27,15 @@ const List = () => {
 
 
     const list = useSelector(selectJobs);
-
-    console.log(list);
+    const dispatch = useDispatch();
 
     const rows = list.map((item) => {
         return createData(item.jobName, item.jobPriority, item.id);
     })
+
+    const handleDelete = (id) => {
+        dispatch(removeJob(id));
+    }
 
 
     return (
@@ -87,22 +90,22 @@ const List = () => {
                         <TableBody>
                             {rows.map((row) => (
                                 <TableRow
-                                    key={row.name}
+                                    key={row?.id}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell component="th" scope="row">
-                                        {row.name}
+                                        {row?.jobName}
                                     </TableCell>
                                     <TableCell align="right">
                                         <Button variant="contained" color="warning">
-                                            {row.calories}
+                                            {row?.jobPriority}
                                         </Button>
                                     </TableCell>
                                     <TableCell align="right">
                                         <Button variant='contained'>
                                             <ModeEditOutlinedIcon />
                                         </Button>
-                                        <Button variant='contained' color="secondary">
+                                        <Button variant='contained' color="secondary" onClick={() => handleDelete(row?.id)}>
                                             <DeleteForeverIcon />
                                         </Button>
                                     </TableCell>

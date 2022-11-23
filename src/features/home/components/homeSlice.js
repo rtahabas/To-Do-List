@@ -20,9 +20,11 @@ export const jobsSlice = createSlice({
         },
         removeJob: (state, action) => {
             state.jobs = state.jobs.filter(job => job.id !== action.payload);
+            window.localStorage.setItem('list', JSON.stringify(state.jobs));
         },
         updateJob: (state, action) => {
             state.jobs = state.jobs.map(job => job.id === action.payload.id ? action.payload : job);
+            window.localStorage.setItem('list', JSON.stringify(state.jobs));
         }
     }
 });

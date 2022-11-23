@@ -7,10 +7,9 @@ import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import CssBaseline from '@mui/material/CssBaseline';
-import EmojiEmotionsRoundedIcon from '@mui/icons-material/EmojiEmotionsRounded';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addJob } from "./components/homeSlice";
 
 import Styles from "./Home.module.scss";
