@@ -26,6 +26,7 @@ export const jobsSlice = createSlice({
             state.jobs = state.jobs.map(job => job.id === action.payload.id ? action.payload : job);
             window.localStorage.setItem('list', JSON.stringify(state.jobs));
         }
+
     }
 });
 
