@@ -1,5 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-export const store = configureStore({
-    reducer: {},
-})
+import jobsReducer from '../features/home/components/homeSlice'
+
+const store = configureStore({
+    reducer: {
+        jobs: jobsReducer
+    },
+});
+
+
+export default store;

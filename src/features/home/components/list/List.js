@@ -16,13 +16,13 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import Styles from "./List.module.scss";
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+function createData(name, calories, fat,) {
+    return { name, calories, fat };
 }
 
 const rows = [
-    createData('Frozen yoghurt', 159, 60),
-    createData('Ice cream sandwich', 237, 90),
+    createData('Frozen yoghurt', "Urgent", 60),
+    createData('Ice cream sandwich', "Urgent", 90),
     createData('Eclair', 262, 160),
     createData('Cupcake', 305, 37),
     createData('Gingerbread', 356, 160),
