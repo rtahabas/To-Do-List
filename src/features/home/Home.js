@@ -12,9 +12,7 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Styles from "./Home.module.scss";
-import List from './components/List';
-
-
+import List from './components/list/List';
 
 const theme = createTheme();
 

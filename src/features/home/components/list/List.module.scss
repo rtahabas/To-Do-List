@@ -1,0 +1,55 @@
+.form {
+    width: 100%;
+    color: #fff;
+    &_wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 2rem;
+    }
+}
+
+.table {
+    width: 100%;
+    margin-top: 1rem;
+    &_container {
+        width: 100%;
+        margin-bottom: 3rem;
+        background-color: transparent !important;
+        table {
+            border-radius: 15px;
+            width: 100%;
+            backdrop-filter: blur(30px);
+            thead {
+                tr {
+                    th {
+                        color: #fff;
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        padding: 1rem;
+                        text-align: center;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    th {
+                        color: #fff;
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        padding: 1rem;
+                        text-align: center;
+                    }
+                    td {
+                        color: #fff;
+                        font-size: 1rem;
+                        font-weight: 400;
+                        padding: 1rem;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
