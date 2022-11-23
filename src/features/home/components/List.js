@@ -25,37 +25,28 @@ const List = () => {
             <Box component="form" className={Styles.form} noValidate onSubmit={"handleSubmit"} sx={{ mt: 3, color: 'text.light' }}>
                 <Box className={Styles.form_wrapper}>
                     <TextField
-                        required
                         fullWidth
-                        id="jobName"
-                        label="Job Name"
-                        name="jobName"
-                        autoComplete="job"
+                        id="filled-search"
+                        label="Search field"
+                        type="search"
+                        variant="filled"
                     />
-
                     <FormControl fullWidth>
                         <InputLabel id="Job Priority">Job Priority</InputLabel>
                         <Select
                             labelId="Job Priority"
                             id="jobPriority"
-                            value={"age"}
+                            value={0}
                             label="jobPriority"
+
                         //onChange={"handleChange"}
                         >
+                            <MenuItem value={0}>Priority(All)</MenuItem>
                             <MenuItem value={10}>Urgent</MenuItem>
                             <MenuItem value={20}>Regular</MenuItem>
                             <MenuItem value={30}>Trivial</MenuItem>
                         </Select>
                     </FormControl>
-                    <Button
-                        fullWidth
-                        className={Styles.create_button}
-                        type="submit"
-                        variant="contained"
-                    >
-                        Create
-                        <AddIcon />
-                    </Button>
                 </Box>
             </Box>
         </Box>
