@@ -4,12 +4,19 @@ const initialState = {
     jobs: [
         {
             id: 1,
-            jobName: "Job 1",
+            jobName: "Frontend Developer",
             jobPriority: "Urgent",
-            jobStatus: "In Progress",
-            jobDescription: "This is a job description",
-            jobDate: "2021-10-10",
-            jobTime: "10:00",
+        },
+        {
+            id: 2,
+            jobName: "Backend Developer",
+            jobPriority: "Regular",
+        },
+        {
+            id: 3,
+            jobName: "Fullstack Developer",
+            jobPriority: "Trivial",
+
         }
     ]
 };

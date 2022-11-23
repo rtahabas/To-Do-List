@@ -10,6 +10,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import EmojiEmotionsRoundedIcon from '@mui/icons-material/EmojiEmotionsRounded';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { addJob } from "./components/homeSlice";
 
 import Styles from "./Home.module.scss";
 import List from './components/list/List';
@@ -18,13 +20,26 @@ const theme = createTheme();
 
 
 const Home = () => {
+
+    const [jobPriority, setJobpriority] = React.useState("");
+
+    const dispatch = useDispatch();
+
+
+    const handleChange = (event) => {
+        setJobpriority(event.target.value);
+    };
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        dispatch(addJob({
+            id: Math.floor(Math.random() * 1000),
+            jobName: data.get('jobName'),
+            jobPriority: jobPriority,
+        }));
+
     };
 
 
@@ -47,7 +62,7 @@ const Home = () => {
                             <Typography component="h1" variant="h5">
                                 Create New Job
                             </Typography>
-                            <Box component="form" className={Styles.form} noValidate onSubmit={handleSubmit} sx={{ mt: 3, color: 'text.light' }}>
+                            <Box component="form" className={Styles.form} onSubmit={handleSubmit} sx={{ mt: 3, color: 'text.light' }}>
                                 <Box className={Styles.form_wrapper}>
                                     <TextField
                                         required
@@ -61,15 +76,16 @@ const Home = () => {
                                     <FormControl fullWidth>
                                         <InputLabel id="Job Priority">Job Priority</InputLabel>
                                         <Select
+                                            required
                                             labelId="Job Priority"
                                             id="jobPriority"
-                                            value={"age"}
+                                            value={jobPriority}
                                             label="jobPriority"
-                                        //onChange={"handleChange"}
+                                            onChange={(event) => handleChange(event)}
                                         >
-                                            <MenuItem value={10}>Urgent</MenuItem>
-                                            <MenuItem value={20}>Regular</MenuItem>
-                                            <MenuItem value={30}>Trivial</MenuItem>
+                                            <MenuItem value={"Urgent"}>Urgent</MenuItem>
+                                            <MenuItem value={"Regular"}>Regular</MenuItem>
+                                            <MenuItem value={"Trivial"}>Trivial</MenuItem>
                                         </Select>
                                     </FormControl>
                                     <Button

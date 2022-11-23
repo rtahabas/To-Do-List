@@ -15,21 +15,26 @@ import Paper from '@mui/material/Paper';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import Styles from "./List.module.scss";
+import { useSelector } from 'react-redux';
+import { selectJobs } from "../homeSlice";
 
 function createData(name, calories, fat,) {
     return { name, calories, fat };
 }
 
-const rows = [
-    createData('Frozen yoghurt', "Urgent", 60),
-    createData('Ice cream sandwich', "Urgent", 90),
-    createData('Eclair', 262, 160),
-    createData('Cupcake', 305, 37),
-    createData('Gingerbread', 356, 160),
-
-];
 
 const List = () => {
+
+
+    const list = useSelector(selectJobs);
+
+    console.log(list);
+
+    const rows = list.map((item) => {
+        return createData(item.jobName, item.jobPriority, item.id);
+    })
+
+
     return (
         <Box
             sx={{
@@ -42,7 +47,7 @@ const List = () => {
             <Typography component="h1" variant="h5">
                 Job List
             </Typography>
-            <Box component="form" className={Styles.form} noValidate onSubmit={"handleSubmit"} sx={{ mt: 3, color: 'text.light' }}>
+            <Box component="form" className={Styles.form} noValidate sx={{ mt: 3, color: 'text.light' }}>
                 <Box className={Styles.form_wrapper}>
                     <TextField
                         fullWidth
