@@ -10,11 +10,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectJobs, removeJob } from "../homeSlice";
+import { useSelector } from 'react-redux';
+import { selectJobs } from "../../homeSlice";
+import DeleteModal from '@components/modals/DeleteModal';
+import EditModal from '@components/modals/EditModal';
+import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Styles from "./List.module.scss";
 
 
@@ -27,20 +29,18 @@ function createData(jobName, jobPriority, id,) {
 const List = () => {
 
     const list = useSelector(selectJobs);
-    const dispatch = useDispatch();
 
     const [search, setSearch] = React.useState("");
     const [priority, setPriority] = React.useState("");
+    const [selectedJob, setSelectedJob] = React.useState({});
     const [filteredJobs, setFilteredJobs] = React.useState(list);
+    const [openEditModal, setOpenEditModal] = React.useState(false);
+    const [openDeleteModal, setOpenDeleteModal] = React.useState(false);
 
 
     const rows = filteredJobs.map((item) => {
         return createData(item.jobName, item.jobPriority, item.id);
     })
-
-    const handleDelete = (id) => {
-        //dispatch(removeJob(id));
-    }
 
 
     const handleSearch = (event, value) => {
@@ -76,8 +76,22 @@ const List = () => {
         else {
             return "success";
         }
+    }
 
+    const handleEditModal = (row) => {
+        setOpenEditModal(!openEditModal);
+        const filledJob = list.find((item) => {
+            return item.id === row?.id;
+        })
+        setSelectedJob(filledJob)
+    }
 
+    const handleDeleteModal = (row) => {
+        setOpenDeleteModal(!openDeleteModal);
+        const filledJob = list.find((item) => {
+            return item.id === row?.id;
+        })
+        setSelectedJob(filledJob)
     }
 
     return (
@@ -143,13 +157,22 @@ const List = () => {
                                         </Button>
                                     </TableCell>
                                     <TableCell align="right">
-                                        <Button variant='contained'>
+                                        <EditModal
+                                            open={openEditModal}
+                                            selectedJob={selectedJob}
+                                            setOpen={setOpenEditModal}
+                                        />
+                                        <Button variant='contained' onClick={() => handleEditModal(row)}>
                                             <ModeEditOutlinedIcon />
                                         </Button>
-                                        <Button variant='contained' color="secondary" onClick={() => handleDelete(row?.id)}>
+                                        <Button variant='contained' color="secondary" onClick={() => handleDeleteModal(row)}>
                                             <DeleteForeverIcon />
-                                            <Modal />
                                         </Button>
+                                        <DeleteModal
+                                            selectedJob={selectedJob}
+                                            openDeleteModal={openDeleteModal}
+                                            setOpenDeleteModal={setOpenDeleteModal}
+                                        />
                                     </TableCell>
                                 </TableRow>
                             ))}

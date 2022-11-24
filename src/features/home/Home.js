@@ -10,7 +10,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
-import { addJob } from "./components/homeSlice";
+import { addJob } from "./homeSlice";
 
 import Styles from "./Home.module.scss";
 import List from './components/list/List';
