@@ -12,8 +12,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import { addJob } from "./homeSlice";
 
-import Styles from "./Home.module.scss";
+
 import List from './components/list/List';
+import Styles from "./Home.module.scss";
 
 const theme = createTheme();
 
@@ -23,7 +24,6 @@ const Home = () => {
     const [jobPriority, setJobpriority] = React.useState("");
 
     const dispatch = useDispatch();
-
 
     const handleChange = (event) => {
         setJobpriority(event.target.value);
@@ -40,6 +40,50 @@ const Home = () => {
         }));
 
     };
+
+    const CssTextField = {
+        '& label.Mui': {
+            color: '#1976d2',
+        },
+        '& label.Mui-focused': {
+            color: '#1976d2',
+        },
+        '& .MuiOutlinedInput-root': {
+            borderColor: '#b8b8b8',
+            '& fieldset': {
+                borderColor: '#b8b8b8',
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: '#b8b8b8',
+            },
+        },
+        '& .MuiOutlinedInput': {
+            color: '#1976d2',
+            borderColor: '#b8b8b8',
+            '& fieldset': {
+                borderColor: '#b8b8b8',
+            }
+
+        },
+
+    };
+
+    const CssSelect = {
+        color: "white",
+        '.MuiOutlinedInput-notchedOutline': {
+            borderColor: '#b8b8b8'
+        },
+        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#b8b8b8'
+        },
+        '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#b8b8b8'
+        },
+        '.MuiSvgIcon-root ': {
+            fill: "white !important",
+        }
+
+    }
 
 
 
@@ -58,12 +102,20 @@ const Home = () => {
                             }}
                         >
 
-                            <Typography component="h1" variant="h5">
+                            <Typography component="h1" variant="h5" color="white">
                                 Create New Job
                             </Typography>
                             <Box component="form" className={Styles.form} onSubmit={handleSubmit} sx={{ mt: 3, color: 'text.light' }}>
                                 <Box className={Styles.form_wrapper}>
                                     <TextField
+                                        InputProps={{
+                                            style: {
+                                                color: "#fff"
+                                            }
+                                        }}
+                                        sx={CssTextField}
+                                        color="warning"
+                                        focused
                                         required
                                         fullWidth
                                         id="jobName"
@@ -75,12 +127,16 @@ const Home = () => {
                                     <FormControl fullWidth>
                                         <InputLabel id="Job Priority">Job Priority</InputLabel>
                                         <Select
+                                            focused
+                                            color="warning"
                                             required
                                             labelId="Job Priority"
                                             id="jobPriority"
                                             value={jobPriority}
                                             label="jobPriority"
                                             onChange={(event) => handleChange(event)}
+                                            sx={CssSelect}
+
                                         >
                                             <MenuItem value={"Urgent"}>Urgent</MenuItem>
                                             <MenuItem value={"Regular"}>Regular</MenuItem>

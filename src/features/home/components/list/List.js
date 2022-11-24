@@ -10,13 +10,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { useSelector } from 'react-redux';
-import { selectJobs } from "../../homeSlice";
 import DeleteModal from '@components/modals/DeleteModal';
 import EditModal from '@components/modals/EditModal';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { selectJobs } from "../../homeSlice";
 import Styles from "./List.module.scss";
 
 
@@ -24,6 +24,9 @@ import Styles from "./List.module.scss";
 function createData(jobName, jobPriority, id,) {
     return { jobName, jobPriority, id };
 }
+
+
+
 
 
 const List = () => {
@@ -94,6 +97,50 @@ const List = () => {
         setSelectedJob(filledJob)
     }
 
+    const CssTextField = {
+        '& label.Mui': {
+            color: '#1976d2',
+        },
+        '& label.Mui-focused': {
+            color: '#1976d2',
+        },
+        '& .MuiOutlinedInput-root': {
+            borderColor: '#b8b8b8',
+            '& fieldset': {
+                borderColor: '#b8b8b8',
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: '#b8b8b8',
+            },
+        },
+        '& .MuiOutlinedInput': {
+            color: '#1976d2',
+            borderColor: '#b8b8b8',
+            '& fieldset': {
+                borderColor: '#b8b8b8',
+            }
+
+        },
+
+    };
+
+    const CssSelect = {
+        color: "white",
+        '.MuiOutlinedInput-notchedOutline': {
+            borderColor: '#b8b8b8'
+        },
+        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#b8b8b8'
+        },
+        '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#b8b8b8'
+        },
+        '.MuiSvgIcon-root ': {
+            fill: "white !important",
+        }
+
+    }
+
     return (
         <Box
             sx={{
@@ -102,26 +149,35 @@ const List = () => {
                 alignItems: 'start',
             }}
         >
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h5" color="white">
                 Job List
             </Typography>
             <Box component="form" className={Styles.form} noValidate sx={{ mt: 3, color: 'text.light' }}>
                 <Box className={Styles.form_wrapper}>
                     <TextField
                         fullWidth
+                        focused
                         id="filled-search"
                         label="Search field"
                         type="search"
-                        variant="filled"
+                        variant="outlined"
+                        sx={CssTextField}
+                        InputProps={{
+                            style: {
+                                color: "#fff"
+                            }
+                        }}
                         onChange={(event) => handleSearch(event, "search")}
                     />
                     <FormControl fullWidth>
                         <InputLabel id="Job Priority">Job Priority</InputLabel>
                         <Select
+                            focused
                             labelId="Job Priority"
                             id="jobPriority"
                             value={priority}
                             label="jobPriority"
+                            sx={CssSelect}
                             onChange={(event) => handleSearch(event, "priority")}
                         >
                             <MenuItem value={""}>Priority(All)</MenuItem>
@@ -162,7 +218,7 @@ const List = () => {
                                             selectedJob={selectedJob}
                                             setOpen={setOpenEditModal}
                                         />
-                                        <Button variant='contained' onClick={() => handleEditModal(row)}>
+                                        <Button sx={{ marginRight: 1 }} variant='contained' onClick={() => handleEditModal(row)}>
                                             <ModeEditOutlinedIcon />
                                         </Button>
                                         <Button variant='contained' color="secondary" onClick={() => handleDeleteModal(row)}>
