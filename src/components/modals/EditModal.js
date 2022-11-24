@@ -34,7 +34,7 @@ export default function EditModal({ open, setOpen, selectedJob }) {
     const data = new FormData(event.currentTarget);
     dispatch(updateJob({
       id: selectedJob?.id,
-      jobName: data.get('jobName'),
+      jobName: selectedJob?.jobName,
       jobPriority: jobPriority || selectedJob?.jobPriority,
     }));
     setOpen(false);
