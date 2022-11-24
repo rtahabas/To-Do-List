@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import AddIcon from '@mui/icons-material/Add';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Table from '@mui/material/Table';
@@ -17,6 +16,8 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectJobs, removeJob } from "../homeSlice";
 import Styles from "./List.module.scss";
+
+
 
 function createData(jobName, jobPriority, id,) {
     return { jobName, jobPriority, id };
@@ -38,7 +39,7 @@ const List = () => {
     })
 
     const handleDelete = (id) => {
-        dispatch(removeJob(id));
+        //dispatch(removeJob(id));
     }
 
 
@@ -63,6 +64,21 @@ const List = () => {
         }
 
     }, [search, priority, list])
+
+    const buttonColor = (priority) => {
+
+        if (priority === "Urgent") {
+            return "error";
+        }
+        else if (priority === "Regular") {
+            return "warning";
+        }
+        else {
+            return "success";
+        }
+
+
+    }
 
     return (
         <Box
@@ -122,7 +138,7 @@ const List = () => {
                                         {row?.jobName}
                                     </TableCell>
                                     <TableCell align="right">
-                                        <Button variant="contained" color="warning">
+                                        <Button variant="contained" color={buttonColor(row?.jobPriority)} >
                                             {row?.jobPriority}
                                         </Button>
                                     </TableCell>
@@ -132,6 +148,7 @@ const List = () => {
                                         </Button>
                                         <Button variant='contained' color="secondary" onClick={() => handleDelete(row?.id)}>
                                             <DeleteForeverIcon />
+                                            <Modal />
                                         </Button>
                                     </TableCell>
                                 </TableRow>
