@@ -108,6 +108,7 @@ const Home = () => {
                             <Box component="form" className={Styles.form} onSubmit={handleSubmit} sx={{ mt: 3, color: 'text.light' }}>
                                 <Box className={Styles.form_wrapper}>
                                     <TextField
+                                        className={Styles.form_wrapper_input}
                                         InputProps={{
                                             style: {
                                                 color: "#fff"

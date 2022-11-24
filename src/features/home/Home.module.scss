@@ -29,9 +29,7 @@
         margin-bottom: 2rem;
         @media (max-width: 768px) {
             flex-direction: column;
-            fieldset input {
-                margin-bottom: 15px;
-            }
+            gap: 25px;
         }
     }
 }
