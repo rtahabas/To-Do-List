@@ -15,6 +15,8 @@ const Header = () => {
         background: "rgba(0, 0, 0, 0.2)",
         backdropFilter: "blur(30px)",
         borderRadius: "15px",
+        position: "fixed",
+        top: "0",
     }
 
     return (
