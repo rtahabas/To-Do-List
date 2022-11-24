@@ -12,6 +12,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteModal from '@components/modals/DeleteModal';
 import EditModal from '@components/modals/EditModal';
+import SortIcon from '@mui/icons-material/Sort';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
@@ -206,12 +207,12 @@ const List = () => {
                                     <TableRow>
                                         <TableCell>
                                             <Button onClick={() => handleSort("name")}>
-                                                Name
+                                                Name <SortIcon />
                                             </Button>
                                         </TableCell>
                                         <TableCell align="right">
                                             <Button onClick={() => handleSort("priority")}>
-                                                Priority
+                                                Priority <SortIcon />
                                             </Button>
                                         </TableCell>
                                         <TableCell align="right">Action&nbsp;(g)</TableCell>
