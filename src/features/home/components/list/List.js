@@ -237,12 +237,14 @@ const List = () => {
                                                     selectedJob={selectedJob}
                                                     setOpen={setOpenEditModal}
                                                 />
-                                                <Button sx={{ marginRight: 1 }} variant='contained' onClick={() => handleEditModal(row)}>
-                                                    <ModeEditOutlinedIcon />
-                                                </Button>
-                                                <Button variant='contained' color="secondary" onClick={() => handleDeleteModal(row)}>
-                                                    <DeleteForeverIcon />
-                                                </Button>
+                                                <Box className={Styles.modalButtons}>
+                                                    <Button sx={{ marginRight: 1 }} variant='contained' onClick={() => handleEditModal(row)}>
+                                                        <ModeEditOutlinedIcon />
+                                                    </Button>
+                                                    <Button variant='contained' color="secondary" onClick={() => handleDeleteModal(row)}>
+                                                        <DeleteForeverIcon />
+                                                    </Button>
+                                                </Box>
                                                 <DeleteModal
                                                     selectedJob={selectedJob}
                                                     openDeleteModal={openDeleteModal}

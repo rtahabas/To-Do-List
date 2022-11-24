@@ -7,6 +7,9 @@
         justify-content: center;
         gap: 15px;
         margin-bottom: 2rem;
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
     }
 }
 
@@ -18,6 +21,9 @@
         margin-bottom: 3rem;
         background-color: transparent !important;
         overflow: hidden;
+        @media (max-width: 768px) {
+            overflow-x: auto;
+        }
         table {
             border-radius: 15px;
             width: 100%;
@@ -52,5 +58,18 @@
                 }
             }
         }
+    }
+}
+
+.modalButtons {
+    display: flex;
+    justify-content: center;
+    button {
+        height: 50px;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #fff;
+        border: none;
     }
 }
