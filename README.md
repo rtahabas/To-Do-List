@@ -1,2 +1,9 @@
 # Rise Technology & Consulting
-Test Case
+ 
+ Getting Started with Create React App
+
+
+
+## Installation
+
+yarn install
