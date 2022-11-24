@@ -12,6 +12,10 @@
     height: calc(100vh - 160px);
     overflow: auto;
     padding: 1rem 3rem;
+    @media (max-width: 768px) {
+        margin: 0% 5%;
+        padding: 1rem 1rem;
+    }
 }
 
 .form {
