@@ -22,6 +22,7 @@ import Styles from "./List.module.scss";
 
 
 
+
 function createData(jobName, jobPriority, id,) {
     return { jobName, jobPriority, id };
 }
@@ -99,7 +100,21 @@ const List = () => {
     const handleSort = (event) => {
 
         if (event === "priority") {
-            setFilteredJobs([...list].sort((a, b) => a.jobPriority.localeCompare(b.jobPriority)));
+
+            const sortedList = [...list].map((item) => {
+                if (item.jobPriority === "Urgent") {
+                    return { ...item, jobEmergancy: 1 }
+                }
+                else if (item.jobPriority === "Regular") {
+                    return { ...item, jobEmergancy: 2 }
+                }
+                else {
+                    return { ...item, jobEmergancy: 3 }
+                }
+            }).sort((a, b) => {
+                return a.jobEmergancy - b.jobEmergancy;
+            })
+            setFilteredJobs(sortedList);
         }
         else {
             setFilteredJobs([...list].sort((a, b) => a.jobName.localeCompare(b.jobName)));
