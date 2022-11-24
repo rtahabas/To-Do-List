@@ -9,7 +9,7 @@ const Footer = () => {
         <footer className="footer">
             <Typography variant="body2" color="text.secondary" align="center" >
                 {'Copyright © '}
-                <Link to="hhttps://github.com/rtahabas">
+                <Link to="https://github.com/rtahabas">
                     R.Taha BAS
                 </Link>{' '}
                 {new Date().getFullYear()}
