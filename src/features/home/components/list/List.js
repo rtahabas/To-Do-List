@@ -26,9 +26,6 @@ function createData(jobName, jobPriority, id,) {
 }
 
 
-
-
-
 const List = () => {
 
     const list = useSelector(selectJobs);
@@ -95,6 +92,19 @@ const List = () => {
             return item.id === row?.id;
         })
         setSelectedJob(filledJob)
+    }
+
+
+    const handleSort = (event) => {
+
+        if (event === "priority") {
+            setFilteredJobs([...list].sort((a, b) => a.jobPriority.localeCompare(b.jobPriority)));
+        }
+        else {
+            setFilteredJobs([...list].sort((a, b) => a.jobName.localeCompare(b.jobName)));
+        }
+
+
     }
 
     const CssTextField = {
@@ -194,8 +204,16 @@ const List = () => {
                             <Table aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell> Name</TableCell>
-                                        <TableCell align="right">Priority&nbsp;(g)</TableCell>
+                                        <TableCell>
+                                            <Button onClick={() => handleSort("name")}>
+                                                Name
+                                            </Button>
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            <Button onClick={() => handleSort("priority")}>
+                                                Priority
+                                            </Button>
+                                        </TableCell>
                                         <TableCell align="right">Action&nbsp;(g)</TableCell>
                                     </TableRow>
                                 </TableHead>
