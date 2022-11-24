@@ -172,7 +172,6 @@ const List = () => {
                     <FormControl fullWidth>
                         <InputLabel id="Job Priority">Job Priority</InputLabel>
                         <Select
-                            focused
                             labelId="Job Priority"
                             id="jobPriority"
                             value={priority}
@@ -189,52 +188,56 @@ const List = () => {
                 </Box>
             </Box>
             <Box className={Styles.table}>
-                <TableContainer className={Styles.table_container} component={Paper}>
-                    <Table aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell> Name</TableCell>
-                                <TableCell align="right">Priority&nbsp;(g)</TableCell>
-                                <TableCell align="right">Action&nbsp;(g)</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {rows?.map((row) => (
-                                <TableRow
-                                    key={row?.id}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        {row?.jobName}
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        <Button variant="contained" color={buttonColor(row?.jobPriority)} >
-                                            {row?.jobPriority}
-                                        </Button>
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        <EditModal
-                                            open={openEditModal}
-                                            selectedJob={selectedJob}
-                                            setOpen={setOpenEditModal}
-                                        />
-                                        <Button sx={{ marginRight: 1 }} variant='contained' onClick={() => handleEditModal(row)}>
-                                            <ModeEditOutlinedIcon />
-                                        </Button>
-                                        <Button variant='contained' color="secondary" onClick={() => handleDeleteModal(row)}>
-                                            <DeleteForeverIcon />
-                                        </Button>
-                                        <DeleteModal
-                                            selectedJob={selectedJob}
-                                            openDeleteModal={openDeleteModal}
-                                            setOpenDeleteModal={setOpenDeleteModal}
-                                        />
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                {
+                    rows.length > 0 && (
+                        <TableContainer className={Styles.table_container} component={Paper}>
+                            <Table aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell> Name</TableCell>
+                                        <TableCell align="right">Priority&nbsp;(g)</TableCell>
+                                        <TableCell align="right">Action&nbsp;(g)</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {rows?.map((row) => (
+                                        <TableRow
+                                            key={row?.id}
+                                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                        >
+                                            <TableCell component="th" scope="row">
+                                                {row?.jobName}
+                                            </TableCell>
+                                            <TableCell align="right">
+                                                <Button variant="contained" color={buttonColor(row?.jobPriority)} >
+                                                    {row?.jobPriority}
+                                                </Button>
+                                            </TableCell>
+                                            <TableCell align="right">
+                                                <EditModal
+                                                    open={openEditModal}
+                                                    selectedJob={selectedJob}
+                                                    setOpen={setOpenEditModal}
+                                                />
+                                                <Button sx={{ marginRight: 1 }} variant='contained' onClick={() => handleEditModal(row)}>
+                                                    <ModeEditOutlinedIcon />
+                                                </Button>
+                                                <Button variant='contained' color="secondary" onClick={() => handleDeleteModal(row)}>
+                                                    <DeleteForeverIcon />
+                                                </Button>
+                                                <DeleteModal
+                                                    selectedJob={selectedJob}
+                                                    openDeleteModal={openDeleteModal}
+                                                    setOpenDeleteModal={setOpenDeleteModal}
+                                                />
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    )
+                }
             </Box>
         </Box>
     )

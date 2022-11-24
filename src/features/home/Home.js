@@ -95,7 +95,7 @@ const Home = () => {
                         <CssBaseline />
                         <Box
                             sx={{
-                                marginTop: 8,
+                                marginTop: 3,
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'start',
@@ -127,7 +127,6 @@ const Home = () => {
                                     <FormControl fullWidth>
                                         <InputLabel id="Job Priority">Job Priority</InputLabel>
                                         <Select
-                                            focused
                                             color="warning"
                                             required
                                             labelId="Job Priority"

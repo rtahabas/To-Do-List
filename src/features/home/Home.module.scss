@@ -1,12 +1,15 @@
 .home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: fixed;
+    left: 0;
+    right: 0;
     background: rgba(0, 0, 0, 0.45);
     transition: 0.3s ease;
     backdrop-filter: blur(30px);
     border-radius: 15px;
     margin: 1% 10%;
+    height: calc(100vh - 160px);
+    overflow: auto;
+    padding: 1rem 3rem;
 }
 
 .form {
