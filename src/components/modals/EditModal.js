@@ -58,6 +58,7 @@ export default function EditModal({ open, setOpen, selectedJob }) {
                 label="Job Name"
                 name="jobName"
                 defaultValue={selectedJob?.jobName}
+                disabled
               />
 
               <FormControl
