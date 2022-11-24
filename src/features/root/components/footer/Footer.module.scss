@@ -9,4 +9,11 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
+    p {
+        color: #fff !important;
+    }
+    a {
+        color: #ed6c02;
+    }
 }
