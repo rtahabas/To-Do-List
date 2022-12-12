@@ -1,4 +1,4 @@
-# Rise Technology & Consulting
+# To-Do List with Redux and LocalStorage
  
  Getting Started with Create React App
 
